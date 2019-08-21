@@ -1,0 +1,121 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+body {
+  background: url(../img/treesunny.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 130%;
+}
+.signup-page-container {
+  display: grid;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.signup-form-container {
+  background-color: rgba(255, 255, 255, 0.9);
+
+  width: 600px;
+}
+
+.header-title {
+  font-size: 1.5rem;
+  background-color: white;
+  width: 600px;
+}
+.header-title h1 {
+  text-align: center;
+}
+
+.input-div {
+  margin: 10px 0;
+}
+
+.input-div label {
+  font-size: 0.9rem;
+  margin-left: 20px;
+}
+
+.input-div input {
+  margin-left: 20px;
+  width: 80%;
+  height: 30px;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid lightgrey;
+  font-size: 1rem;
+}
+
+.radio-btn-signin {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: red;
+  display: inline-block;
+  position: relative;
+  background-color: #f1f1f1;
+  color: #666;
+  top: 10px;
+  height: 30px;
+  width: 30px;
+  border: 0;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-right: 7px;
+  outline: none;
+}
+.radio-btn-signin:checked::before {
+  position: absolute;
+  font: 13px/1 "Open Sans", sans-serif;
+  left: 11px;
+  top: 7px;
+  content: "\02143";
+  transform: rotate(40deg);
+}
+.radio-btn-signin:hover {
+  background-color: #f7f7f7;
+}
+.radio-btn-signin:checked {
+  background-color: #f1f1f1;
+}
+
+.user-preference-input {
+  margin-top: 30px;
+}
+.measurement-preference {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.location-form {
+  display: grid;
+}
+.location-form input {
+  font-size: 0.9rem;
+}
+.location-form input {
+  width: 80%;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  margin-top: 10px;
+}
+
+.submit-btn-account {
+  width: 60%;
+  height: 40px;
+  border-radius: 30px;
+  color: #000;
+  font-size: 1.2rem;
+
+  background-color: #20bf55;
+  background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+}
+
+.creation-signin-btn {
+  margin-top: 20px;
+  text-align: center;
+}
