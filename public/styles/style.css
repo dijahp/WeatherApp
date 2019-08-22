@@ -1,30 +1,61 @@
+@import url("https://fonts.googleapis.com/css?family=Livvic&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   margin: 0;
   height: 100%;
 }
 body {
-  background: url(../img/treesunny.jpg);
+  /* background: url(../img/treesunny.jpg); */
   background-repeat: no-repeat;
   background-size: cover;
   height: 130%;
+}
+
+.fullscreen-video-wrap {
+  height: 100vh;
+}
+
+.v-header-container {
+  height: 150vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
 }
 .signup-page-container {
   display: grid;
   justify-content: center;
   margin-top: 20px;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 .signup-form-container {
   background-color: rgba(255, 255, 255, 0.9);
-
+  z-index: 100;
   width: 600px;
 }
 
+.signin-page {
+  position: relative;
+  top: 80px;
+}
+
 .header-title {
-  font-size: 1.5rem;
+  font-size: 1rem;
   background-color: white;
   width: 600px;
+  font-family: "Nunito Sans", sans-serif;
+  z-index: 100;
+}
+
+.signin-title {
 }
 .header-title h1 {
   text-align: center;
@@ -57,7 +88,7 @@ body {
   display: inline-block;
   position: relative;
   background-color: #f1f1f1;
-  color: #666;
+  color: #4d4b4b;
   top: 10px;
   height: 30px;
   width: 30px;
@@ -108,11 +139,11 @@ body {
   width: 60%;
   height: 40px;
   border-radius: 30px;
-  color: #000;
+  color: #fff;
   font-size: 1.2rem;
 
-  background-color: #20bf55;
-  background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+  background-color: #0cbaba;
+  background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
 }
 
 .creation-signin-btn {
