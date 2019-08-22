@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #0a1a2a;
+}
+
+.container-whole-page {
+  background-color: #0a1a2a;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.dashboard-container {
+  background-color: #050d15;
+  position: relative;
+  top: 25px;
+  left: 30px;
+  width: 95vw;
+  min-height: 93vh;
+  -webkit-box-shadow: -2px 3px 16px 4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -2px 3px 16px 4px rgba(0, 0, 0, 0.75);
+  box-shadow: -2px 3px 16px 4px rgba(0, 0, 0, 0.75);
+  display: flex;
+}
+
+.side-bar-container {
+  width: 60px;
+  background: #011831;
+}
+
+.main-dash {
+  width: 100%;
+  background-color: #000d1b;
+  -webkit-box-shadow: -5px 1px 34px -14px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -5px 1px 34px -14px rgba(0, 0, 0, 0.75);
+  box-shadow: -5px 1px 34px -14px rgba(0, 0, 0, 0.75);
+}
+
+.top-header-intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  font-size: 1.6rem;
+  background: #000d1b;
+}
+.name-intro {
+  background: #000d1b;
+  color: #c0c0c0;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.home-icon,
+.profile-icon {
+  background: #011831;
+  height: 30px;
+  text-align: center;
+  padding: 20px 0 30px 0;
+}
+.home-icon i,
+.profile-icon i {
+  background: #011831;
+  font-size: 1.4rem;
+  color: #c0c0c0;
+}
+.home-icon i:hover,
+.profile-icon i:hover {
+  color: #ececec;
+  transition: 0.3s;
+}

@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css?family=Livvic&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+body {
+  /* background: url(../img/treesunny.jpg); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 130%;
+}
+
+.fullscreen-video-wrap {
+  height: 100vh;
+}
+
+.v-header-container {
+  height: 150vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.signup-page-container {
+  display: grid;
+  justify-content: center;
+  margin-top: 20px;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.signup-form-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 100;
+  width: 600px;
+}
+
+.signin-page {
+  position: relative;
+  top: 80px;
+}
+
+.header-title {
+  font-size: 1rem;
+  background-color: white;
+  width: 600px;
+  font-family: "Nunito Sans", sans-serif;
+  z-index: 100;
+}
+
+.signin-title {
+}
+.header-title h1 {
+  text-align: center;
+}
+
+.input-div {
+  margin: 10px 0;
+}
+
+.input-div label {
+  font-size: 0.9rem;
+  margin-left: 20px;
+}
+
+.input-div input {
+  margin-left: 20px;
+  width: 80%;
+  height: 30px;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid lightgrey;
+  font-size: 1rem;
+}
+
+.radio-btn-signin {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: red;
+  display: inline-block;
+  position: relative;
+  background-color: #f1f1f1;
+  color: #4d4b4b;
+  top: 10px;
+  height: 30px;
+  width: 30px;
+  border: 0;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-right: 7px;
+  outline: none;
+}
+.radio-btn-signin:checked::before {
+  position: absolute;
+  font: 13px/1 "Open Sans", sans-serif;
+  left: 11px;
+  top: 7px;
+  content: "\02143";
+  transform: rotate(40deg);
+}
+.radio-btn-signin:hover {
+  background-color: #f7f7f7;
+}
+.radio-btn-signin:checked {
+  background-color: #f1f1f1;
+}
+
+.user-preference-input {
+  margin-top: 30px;
+}
+.measurement-preference {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.location-form {
+  display: grid;
+}
+.location-form input {
+  font-size: 0.9rem;
+}
+.location-form input {
+  width: 80%;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  margin-top: 10px;
+}
+
+.submit-btn-account {
+  width: 60%;
+  height: 40px;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 1.2rem;
+  background-color: #0cbaba;
+  background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
+  -moz-box-shadow: inset 0px 0px 15px 3px #23395e;
+  -webkit-box-shadow: inset 0px 0px 15px 3px #23395e;
+  box-shadow: inset 0px 0px 15px 3px #23395e;
+}
+
+.creation-signin-btn {
+  margin-top: 20px;
+  text-align: center;
+}
