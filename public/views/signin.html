@@ -19,27 +19,29 @@
         ></video>
       </div>
     </header>
-    <div class="signup-page-container signin-page">
-      <div class="header-title signin-title">
-        <h1>Welcome to Weather or Not</h1>
-      </div>
-      <div class="signup-form-container signin-form-page">
-        <div class="email-form input-div signin-email">
-          <label>Email</label>
-          <br />
-          <input type="email" />
+    <form action="/signin" method="POST">
+      <div class="signup-page-container signin-page">
+        <div class="header-title signin-title">
+          <h1>Welcome to Weather or Not</h1>
         </div>
-        <div class="password-form input-div signin-pass">
-          <label>Password</label>
-          <br />
-          <input type="password" />
-        </div>
+        <div class="signup-form-container signin-form-page">
+          <div class="email-form input-div signin-email">
+            <label>Email</label>
+            <br />
+            <input type="email" />
+          </div>
+          <div class="password-form input-div signin-pass">
+            <label>Password</label>
+            <br />
+            <input type="password" />
+          </div>
 
-        <div class="creation-signin-btn">
-          <button class="submit-btn-account">Login</button>
-          <p>Don't have an account? <a href>Create one Now!</a></p>
+          <div class="creation-signin-btn">
+            <button class="submit-btn-account" type="submit">Login</button>
+            <p>Don't have an account? <a href>Create one Now!</a></p>
+          </div>
         </div>
       </div>
-    </div>
+    </form>
   </body>
 </html>

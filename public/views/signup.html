@@ -19,49 +19,53 @@
         ></video>
       </div>
     </header>
-    <div class="signup-page-container">
-      <div class="header-title">
-        <h1>Create Account</h1>
-      </div>
-      <div class="signup-form-container">
-        <div class="first-name input-div">
-          <label>First Name</label>
-          <br />
-          <input type="text" />
+    <form action="/signup" method="POST">
+      <div class="signup-page-container">
+        <div class="header-title">
+          <h1>Create Account</h1>
         </div>
-        <div class="last-name input-div">
-          <label>Last Name</label>
-          <br />
-          <input type="text" />
-        </div>
-        <div class="email-form input-div">
-          <label>Email</label>
-          <br />
-          <input type="email" />
-        </div>
-        <div class="password-form input-div">
-          <label>Password</label>
-          <br />
-          <input type="password" />
-        </div>
-        <div class="user-preference-input">
-          <div class="measurement-preference">
-            <p>What unit of measurement?</p>
-            <input class="radio-btn-signin" type="radio" name="units" />
-            <label for="">C&deg</label>
-            <input class="radio-btn-signin" type="radio" name="units" />
-            <label for="">F&deg</label>
+        <div class="signup-form-container">
+          <div class="first-name input-div">
+            <label>First Name</label>
+            <br />
+            <input type="text" />
           </div>
-          <div class="location-form input-div">
-            <label for="">Location</label>
-            <input type="text" / placeholder="City, State">
+          <div class="last-name input-div">
+            <label>Last Name</label>
+            <br />
+            <input type="text" />
+          </div>
+          <div class="email-form input-div">
+            <label>Email</label>
+            <br />
+            <input type="email" />
+          </div>
+          <div class="password-form input-div">
+            <label>Password</label>
+            <br />
+            <input type="password" />
+          </div>
+          <div class="user-preference-input">
+            <div class="measurement-preference">
+              <p>What unit of measurement?</p>
+              <input class="radio-btn-signin" type="radio" name="units" />
+              <label for="">C&deg</label>
+              <input class="radio-btn-signin" type="radio" name="units" />
+              <label for="">F&deg</label>
+            </div>
+            <div class="location-form input-div">
+              <label for="">Location</label>
+              <input type="text" / placeholder="City, State">
+            </div>
+          </div>
+          <div class="creation-signin-btn">
+            <button class="submit-btn-account" type="submit">
+              Create Account
+            </button>
+            <p>Have an account? <a href>Login Now!</a></p>
           </div>
         </div>
-        <div class="creation-signin-btn">
-          <button class="submit-btn-account">Create Account</button>
-          <p>Have an account? <a href>Login Now!</a></p>
-        </div>
       </div>
-    </div>
+    </form>
   </body>
 </html>
