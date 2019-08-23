@@ -1,16 +1,20 @@
 var express = require("express");
-var db = require("./models");
 var bodyParser = require("body-parser");
 var bcrypt = require("bcrypt");
 
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.set("view engine", "ejs");
-app.set("views", "app/views");
+app.set("views", "views");
 
-app.get("/signup", function(req, res, next) {});
+app.use(express.static(__dirname + "/public"));
 
 app.get("/signup", function(req, res, next) {
+  res.render("signup");
+});
+
+app.post("/signup", function(req, res) {
   var email = req.body.email;
   var password = req.body.password;
   var firstName = req.body.firstName;
@@ -22,7 +26,7 @@ app.get("/signup", function(req, res, next) {
   console.log(firstName);
   console.log(password);
   console.log(lastName);
-  console.log(unit);
+  console.log(units);
   console.log(location);
 });
 
