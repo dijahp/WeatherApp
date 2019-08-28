@@ -24,10 +24,11 @@
   -moz-box-shadow: -2px 3px 16px 4px rgba(0, 0, 0, 0.75);
   box-shadow: -2px 3px 16px 4px rgba(0, 0, 0, 0.75);
   display: flex;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 .side-bar-container {
-  width: 60px;
+  min-width: 60px;
   background: #011831;
 }
 
@@ -70,4 +71,97 @@
 .profile-icon i:hover {
   color: #ececec;
   transition: 0.3s;
+}
+
+/* Weather card & container */
+
+.weather-cards {
+  margin: 50px 50px 10px 50px;
+  background: #000d1b;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+.weather-card {
+  width: 200px;
+  height: 280px;
+  border-radius: 20px;
+
+  -webkit-box-shadow: -2px 3px 16px 4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -2px 3px 16px 4px rgba(0, 0, 0, 0.75);
+  box-shadow: -2px 3px 16px 4px rgba(0, 0, 0, 0.75);
+}
+.background-weather {
+  background: black;
+}
+
+.cityname {
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  text-align: center;
+  font-size: 2rem;
+  color: #000;
+  height: 75px;
+  background: url(../styles/img/Clouds.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-bottom: transparent;
+}
+
+.weather-card h4 {
+  font-size: 1.3rem;
+  margin-top: 15px;
+  text-align: center;
+  color: #ececec;
+}
+.temperature {
+  font-size: 1.3rem;
+  margin-top: 15px;
+  text-align: center;
+  color: #ececec;
+}
+.today-date {
+  font-size: 1.3rem;
+  margin-top: 15px;
+  text-align: center;
+  color: #ececec;
+}
+
+.button-container {
+  text-align: center;
+  width: 100%;
+  margin-top: 15px;
+}
+.see-more {
+  width: 150px;
+  height: 30px;
+  background: #ececec;
+  color: #000;
+  font-size: 1.4rem;
+  font-weight: 600;
+  box-shadow: inset 5px 5px 10px 2px #888888;
+  border-radius: 10px;
+  border: none;
+}
+.search-weather-loc {
+  background: #000d1b;
+  text-align: center;
+}
+.search-weather-loc form {
+  background: #000d1b;
+}
+.search-bar {
+  color: #ececec;
+  font-size: 1.2rem;
+  width: 400px;
+  padding: 2px 2px;
+}
+.search-bar::placeholder {
+  color: #ececec;
+}
+
+.search-btn {
+  padding: 1px 5px;
+  font-size: 1.2rem;
+  color: #ececec;
 }
