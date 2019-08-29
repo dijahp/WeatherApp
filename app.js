@@ -34,46 +34,95 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.set("view engine", "ejs");
-app.set("views", "views");
+app.set("views", "app/views");
 
 app.use(express.static(__dirname + "/public"));
 
+// Sign-up section
 app.get("/signup", function (req, res, next) {
+  if (req.session.user_id) {
+    res.redirect("/dashboard");
+    return;
+  }
   res.render("signup");
 });
-app.get("/signin", function (req, res, next) {
-  res.render("signin");
-});
 
-app.get("/dashboard", function (req, res, next) {
-  res.render("dashboard", {});
-});
+app.post("/signup", function (req, res, next) {
+  if (req.session.user_id) {
+    res.redirect("/dashboard");
+    return;
+  }
 
-var cards = [];
-
-app.post("/signup", function (req, res) {
   var email = req.body.email;
   var password = req.body.password;
   var firstName = req.body.firstName;
   var lastName = req.body.lastName;
-  var units = req.body.units;
   var location = req.body.location;
 
-  console.log(email);
-  console.log(firstName);
-  console.log(password);
-  console.log(lastName);
-  console.log(units);
-  console.log(location);
+  // create new user in db with encrypted password
+  bcrypt.hash(password, 10, function (err, hash) {
+    db.user.create({ email: email, password_hash: hash, firstName: firstName, lastName: lastName, location: location }).then(function (user) {
+      req.session.user_id = user.id; // set session for the signed in user
+      res.redirect("/dashboard");
+    });
+  });
+});
+
+// Sign-in section
+app.get("/signin", function (req, res, next) {
+  res.render("signin", { error_message: " " });
 });
 
 app.post("/signin", function (req, res) {
   var email = req.body.email;
   var password = req.body.password;
-
-  console.log(email);
-  console.log(password);
+  db.user.findOne({ where: { email: email } }).then(function (user) {
+    if (user === null) {
+      // need message to say there is no existing user with that login
+      res.render("signin", { error_message: "User not found" });
+    } else {
+      // check password for match
+      bcrypt.compare(password, user.password_hash, function (err, matched) {
+        if (matched) {
+          // set user_id in the session and redirect to dashboard
+          req.session.user_id = user.id;
+          res.redirect("/dashboard");
+        } else {
+          // send to signin pag
+          res.render("signin", { error_message: "Incorrect login entered" });
+        }
+      });
+    }
+  });
 });
+
+
+// Dashboard section
+app.get("/dashboard", function (req, res, next) {
+  if (req.session.user_id === undefined) {
+    res.redirect("/signin");
+    return;
+  }
+  var user_id = req.session.user_id;
+  db.user.findByPk(user_id).then(function (user) {
+    var name = user.firstName;
+    res.render('dashboard', {
+      firstName: name
+    })
+  })
+});
+
+// Add card for initial location and one card per check weather button press (up to 5 total)
+// Cards should populate using the openweather API information
+var cards = [];
+
+// Sign-out section
+app.get("/signout", function (req, res, next) {
+  req.session.destroy();
+  res.redirect("/signin");
+})
+
+
 
 app.listen(3000, function () {
   console.log("listening on port 3000...");
