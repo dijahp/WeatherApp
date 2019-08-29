@@ -1,6 +1,5 @@
 var weatherCard = [];
 var city;
-
 // render function
 
 function renderWeather(location) {
@@ -15,8 +14,13 @@ function renderWeather(location) {
  
            <p class="temperature"> ${location.main.temp}&degF</p>
            <p class="today-date">${location.weather[0].description}</p>
+           <p class="today-hum">Humidity: ${location.main.humidity}%</p>
+           <p class="today-min">Min Temp: ${location.main.temp_min}&degF</p>
+           <p class="today-max">Max Temp: ${location.main.temp_max}&degF</p>
            <div class="button-container">
            <button class="see-more">See More</button>
+           <button class="removal">Removal</button>
+           </div>
          `;
 }
 
@@ -35,13 +39,17 @@ document.addEventListener("submit", function(e) {
       var type = response.data.weather[0].main;
       console.log(response.data);
 
-      var container = document.querySelector(".weather-cards");
-      let newWeather = document.createElement("div");
-      newWeather.className = "weather-card";
-      newWeather.innerHTML = renderWeather(response.data);
-      newWeather;
-      container.appendChild(newWeather);
-      return response;
+      var fiveCard = document.querySelectorAll(".weather-card").length;
+
+      if (fiveCard <= 4) {
+        var container = document.querySelector(".weather-cards");
+        let newWeather = document.createElement("div");
+        newWeather.className = "weather-card";
+        newWeather.innerHTML = renderWeather(response.data);
+        newWeather;
+        container.appendChild(newWeather);
+        return response;
+      }
     })
     .then(function(response) {
       let c = document.getElementsByClassName("cityname");

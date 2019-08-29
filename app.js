@@ -21,12 +21,14 @@ var app = express();
 
 app.use(cookieParser());
 
-app.use(session({
-  secret: 'appSecret',
-  resave: false,
-  saveUninitialized: true,
-  store: sessionStorage
-}));
+app.use(
+  session({
+    secret: "appSecret",
+    resave: false,
+    saveUninitialized: true,
+    store: sessionStorage
+  })
+);
 
 sessionStorage.sync();
 
@@ -38,20 +40,23 @@ app.set("views", "views");
 
 app.use(express.static(__dirname + "/public"));
 
-app.get("/signup", function (req, res, next) {
+app.get("/signup", function(req, res, next) {
   res.render("signup");
 });
-app.get("/signin", function (req, res, next) {
+app.get("/", (req, res, next) => {
+  res.redirect("/signin");
+});
+app.get("/signin", function(req, res, next) {
   res.render("signin");
 });
 
-app.get("/dashboard", function (req, res, next) {
+app.get("/dashboard", function(req, res, next) {
   res.render("dashboard", {});
 });
 
 var cards = [];
 
-app.post("/signup", function (req, res) {
+app.post("/signup", function(req, res) {
   var email = req.body.email;
   var password = req.body.password;
   var firstName = req.body.firstName;
@@ -67,7 +72,7 @@ app.post("/signup", function (req, res) {
   console.log(location);
 });
 
-app.post("/signin", function (req, res) {
+app.post("/signin", function(req, res) {
   var email = req.body.email;
   var password = req.body.password;
 
@@ -75,6 +80,6 @@ app.post("/signin", function (req, res) {
   console.log(password);
 });
 
-app.listen(3000, function () {
+app.listen(3000, function() {
   console.log("listening on port 3000...");
 });
