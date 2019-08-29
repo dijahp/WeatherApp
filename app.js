@@ -19,6 +19,9 @@ app.use(express.static(__dirname + "/public"));
 app.get("/signup", function(req, res, next) {
   res.render("signup");
 });
+app.get("/", (req, res, next) => {
+  res.redirect("/signin");
+});
 app.get("/signin", function(req, res, next) {
   res.render("signin");
 });
