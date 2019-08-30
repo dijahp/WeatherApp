@@ -63,6 +63,17 @@ app.post("/signup", function (req, res, next) {
   bcrypt.hash(password, 10, function (err, hash) {
     db.user.create({ email: email, password_hash: hash, firstName: firstName, lastName: lastName, location: location }).then(function (user) {
       req.session.user_id = user.id; // set session for the signed in user
+      // When user successfully created, use the user's id to populate the
+      // card_locations table with the location entered at signup
+      db.card_locations.create({ id: req.session.user_id, location_1: req.session.location })
+      // Signup location is not being pulled into the card_locations table
+
+      // Send the first location to the default card on the dashboard
+
+      // Need to check for other locations in the card_locations table
+
+      // If other locations exist in the table, create cards for each location
+      // up to 5 total
       res.redirect("/dashboard");
     });
   });
@@ -96,7 +107,6 @@ app.post("/signin", function (req, res) {
   });
 });
 
-
 // Dashboard section
 app.get("/dashboard", function (req, res, next) {
   if (req.session.user_id === undefined) {
@@ -106,9 +116,20 @@ app.get("/dashboard", function (req, res, next) {
   var user_id = req.session.user_id;
   db.user.findByPk(user_id).then(function (user) {
     var name = user.firstName;
+
+    // how is the city name stripped out of the entire location input?
+    var city = user.location;
+
     res.render('dashboard', {
       firstName: name
+    }, 'cards', {
+        location: city
+      })
+    // Render the individual cards for the locations in the table
+    res.render('cards', {
+
     })
+
   })
 });
 
