@@ -88,7 +88,7 @@ app.post("/signin", function (req, res) {
           req.session.user_id = user.id;
           res.redirect("/dashboard");
         } else {
-          // send to signin pag
+          // send to signin page
           res.render("signin", { error_message: "Incorrect login entered" });
         }
       });
