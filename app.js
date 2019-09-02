@@ -6,6 +6,7 @@ var ejs = require("ejs");
 var cookieParser = require("cookie-parser");
 var db = require("./models");
 var SequelizeStore = require("connect-session-sequelize")(session.Store);
+var PORT = process.env.PORT || 3000;
 
 var axios = require("axios");
 
@@ -21,12 +22,14 @@ var app = express();
 
 app.use(cookieParser());
 
-app.use(session({
-  secret: 'appSecret',
-  resave: false,
-  saveUninitialized: true,
-  store: sessionStorage
-}));
+app.use(
+  session({
+    secret: "appSecret",
+    resave: false,
+    saveUninitialized: true,
+    store: sessionStorage
+  })
+);
 
 sessionStorage.sync();
 
@@ -38,6 +41,7 @@ app.set("views", "app/views");
 
 app.use(express.static(__dirname + "/public"));
 
+<<<<<<< HEAD
 // Sign-up section
 app.get("/signup", function (req, res, next) {
   if (req.session.user_id) {
@@ -53,12 +57,83 @@ app.post("/signup", function (req, res, next) {
     return;
   }
 
+=======
+app.use(function(req, res, next) {
+  if (req.session.user_id !== undefined) {
+    next();
+  } else if (req.path === "/signin") {
+    next();
+  } else if (req.path === "/signup") {
+    next();
+  } else {
+    res.redirect("/signin");
+  }
+});
+
+app.get("/signup", function(req, res, next) {
+  res.render("signup");
+});
+app.get("/", (req, res, next) => {
+  res.redirect("/signup");
+});
+app.get("/signin", function(req, res, next) {
+  res.render("signin", {
+    error_message: " "
+  });
+});
+
+app.post("/signin", function(req, res, next) {
+  var email = req.body.email;
+  var password = req.body.password;
+
+  db.user.findOne({ where: { email: email } }).then(function(user) {
+    if (user != null) {
+      bcrypt.compare(password, user.password_hash, function(err, matched) {
+        if (matched) {
+          // set user_id in the session
+          req.session.user_id = user.id;
+          // redirect to welcome page
+          res.redirect("/dashboard");
+        } else {
+          // render the login form
+          res.render("signin", { error_message: "Bad Password" });
+        }
+      });
+    } else {
+      res.render("signin", { error_message: "User Not Found" });
+    }
+  });
+});
+
+app.post("/signup", function(req, res) {
+>>>>>>> master
   var email = req.body.email;
   var password = req.body.password;
   var firstName = req.body.firstName;
   var lastName = req.body.lastName;
-  var location = req.body.location;
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
+  var location = req.body.location;
+  location = location.substr(0, location.indexOf(","));
+  bcrypt.hash(password, 10, function(err, hash) {
+    db.user
+      .create({
+        email: email,
+        password_hash: hash,
+        firstName: firstName,
+        lastName: lastName,
+        location: location
+      })
+      .then(function(user) {
+        req.session.user_id = user.id;
+        res.redirect("/dashboard");
+      });
+  });
+});
+
+<<<<<<< HEAD
   // create new user in db with encrypted password
   bcrypt.hash(password, 10, function (err, hash) {
     db.user.create({ email: email, password_hash: hash, firstName: firstName, lastName: lastName, location: location }).then(function (user) {
@@ -82,9 +157,25 @@ app.post("/signup", function (req, res, next) {
 // Sign-in section
 app.get("/signin", function (req, res, next) {
   res.render("signin", { error_message: " " });
+=======
+app.get("/dashboard", function(req, res, next) {
+  var user_id = req.session.user_id;
+
+  db.user
+    .findByPk(user_id)
+    .then(function(user) {
+      var firstName = user.firstName;
+      var location = user.location;
+      res.render("dashboard", {
+        firstName: firstName,
+        location: location
+      });
+    })
+    .then(function(user) {});
+>>>>>>> master
 });
 
-app.post("/signin", function (req, res) {
+app.post("/signin", function(req, res) {
   var email = req.body.email;
   var password = req.body.password;
   db.user.findOne({ where: { email: email } }).then(function (user) {
@@ -133,6 +224,7 @@ app.get("/dashboard", function (req, res, next) {
   })
 });
 
+<<<<<<< HEAD
 // Add card for initial location and one card per check weather button press (up to 5 total)
 // Cards should populate using the openweather API information
 var cards = [];
@@ -146,5 +238,8 @@ app.get("/signout", function (req, res, next) {
 
 
 app.listen(3000, function () {
+=======
+app.listen(PORT, function() {
+>>>>>>> master
   console.log("listening on port 3000...");
 });
