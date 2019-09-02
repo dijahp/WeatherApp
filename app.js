@@ -8,6 +8,9 @@ var db = require("./models");
 var SequelizeStore = require("connect-session-sequelize")(session.Store);
 var PORT = process.env.PORT || 3000;
 
+db.user.hasMany(db.card_locations);
+db.card_locations.belongsTo(db.user);
+
 var axios = require("axios");
 
 var city = "Atlanta";

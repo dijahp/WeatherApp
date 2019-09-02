@@ -111,3 +111,29 @@ body {
   margin-top: 20px;
   text-align: center;
 }
+
+@media all and (min-width: 480px) and (max-width: 768px) {
+  .header-title {
+    font-size: 1rem;
+    background-color: white;
+    width: 500px;
+    font-family: "Nunito Sans", sans-serif;
+    z-index: 100;
+  }
+  .signup-form-container {
+    width: 500px;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .header-title {
+    font-size: 1rem;
+    background-color: white;
+    width: 300px;
+    font-family: "Nunito Sans", sans-serif;
+    z-index: 100;
+  }
+  .signup-form-container {
+    width: 300px;
+  }
+}

@@ -3,6 +3,13 @@ var city;
 // render function
 
 document.addEventListener("DOMContentLoaded", function(e) {
+  window.onload = function() {
+    if (!window.location.hash) {
+      window.location = window.location + "#loaded";
+      window.location.reload();
+    }
+  };
+
   var today = new Date();
   var dd = today.getDate();
   var mm = today.getMonth();
@@ -33,13 +40,13 @@ document.addEventListener("DOMContentLoaded", function(e) {
       firstCardTemp.innerHTML = `
       <p class="temperature"> ${locationuno.main.temp}&degF</p>`;
       firstCardDate.innerHTML = `
-      <p class="today-date">${location.weather[0].description}</p>`;
+      <p class="today-date">${locationuno.weather[0].description}</p>`;
       firstCardMin.innerHTML = `
-      <p class="today-min">Min Temp: ${location.main.temp_min}&degF</p>`;
+      <p class="today-min">Min Temp: ${locationuno.main.temp_min}&degF</p>`;
       firstCardMax.innerHTML = `
-      <p class="today-max">Max Temp: ${location.main.temp_max}&degF</p>`;
+      <p class="today-max">Max Temp: ${locationuno.main.temp_max}&degF</p>`;
       firstCardHum.innerHTML = `
-      <p class="today-hum">Humidity: ${location.main.humidity}%</p>`;
+      <p class="today-hum">Humidity: ${locationuno.main.humidity}%</p>`;
     });
 
   function renderWeather(location) {
