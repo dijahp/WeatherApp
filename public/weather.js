@@ -81,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
       )
       .then(function(response) {
         var type = response.data.weather[0].main;
-        console.log(response.data);
 
         var fiveCard = document.querySelectorAll(".weather-card").length;
 
