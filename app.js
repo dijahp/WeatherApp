@@ -134,9 +134,6 @@ app.get("/dashboard", function(req, res, next) {
 app.post("/signin", function(req, res) {
   var email = req.body.email;
   var password = req.body.password;
-
-  console.log(email);
-  console.log(password);
 });
 
 app.listen(PORT, function() {
